@@ -1,0 +1,26 @@
+<h1>Lista składników</h1>
+
+<table class="table">
+<tr><th>Lp.</th><th>Nazwa</th><th>Jarski</th><th>Operacje</th><th>autor</th><th>Pizza</th></tr>
+{% for p in object_list %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ p.nazwa }}</td>
+    <td>
+        {% if p.jarski == True %}
+            TAK
+        {% else %}
+            NIE
+        {% endif %}
+        </td>
+    <td>
+        {% if p.pizza.autor.username == user.username %}
+            <a href="#">Edytuj</a> &bull;
+            <a href="#">Usuń</a>
+        {% endif %}
+    </td>
+    <td>{{ p.pizza.autor }}</td>
+    <td>{{ p.pizza.nazwa }}</td>
+</tr>
+{% endfor %}
+</table>
